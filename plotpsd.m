@@ -1,4 +1,4 @@
-%% plotpsd - plot da densidade espectral de potência
+%% plotpsd - plot da densidade de potência espectral
 
 % descrição dos parâmetros
 % X: vetor real
@@ -18,6 +18,9 @@ function plotpsd(X, fa)
     % calcula o módulo da fft pois estamos interessados na correlação de
     % senos (im) e cossenos (real) de cada frequência com os harmônicos do
     % sinal
+    % eleva ao quadrado e divide por fa * N pois estamos interessados na densidade
+    % de potência espectral (potencia/frequencia) i.e. multiplicamos a potência fft^2/N^2
+    % por N/fa
     % dividimos por N para obter a amplitude
     A_X1 = abs(X_fft).^2 / (fa * N);
     % separa a primeira metade (frequências positivas) pois o módulo da fft
